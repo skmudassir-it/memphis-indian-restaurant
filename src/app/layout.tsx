@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,13 +12,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
 export const metadata: Metadata = {
   title: "Memphis Indian Restaurant | Authentic Indian Cuisine",
   description:
     "Experience the finest Hyderabadi Biryani, rich curries, sizzling appetizers, and traditional tiffins at Memphis Indian Restaurant. Authentic flavors, unforgettable taste.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "Memphis Indian Restaurant",
     description: "Authentic Indian Cuisine in Memphis — Biryani, Curries, Tiffins & More",
+    images: ["/logo.png"],
   },
 };
 
@@ -30,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>
